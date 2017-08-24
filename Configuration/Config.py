@@ -3,3 +3,4 @@ HOST = '0.0.0.0'
 PORT = 7916
 
 DB_NAME = 'hackatonDB'
+CONN_STR = 'localhost'
