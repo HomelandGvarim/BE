@@ -6,6 +6,8 @@ from Handlers.HelloWorldHandler import HelloWorldHandler
 from Handlers.FriendsHandler import FriendsHandler
 from Configuration.Config import SERVER_HOST, SERVER_PORT, API_KEY, REG_ID
 
+from Listeners.WebServer import WebServer
+
 from gcm import GCM
 
 root = os.path.dirname(__file__)
@@ -27,7 +29,11 @@ def _main():
 
 
 def main():
-    
+    clients = {}
+
+    server = WebServer(SERVER_PORT, SERVER_HOST, clients)
+    server.start()
+
     gcm = GCM(API_KEY)
 
     registration_ids = [ 'tok1', 'tok2' ]
