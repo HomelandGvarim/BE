@@ -6,3 +6,7 @@ DB_NAME = 'hackatonDB'
 CONN_STR = 'localhost'
 
 MONGO_CLIENT_HOST = 'localhost:27017'
+
+
+API_KEY = 'AIzaSyDxmYxYdJdUiG79l8uHAHyuQjYenhV7g70'
+REG_ID = '????'
