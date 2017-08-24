@@ -1,7 +1,6 @@
 import os
 import tornado.ioloop
 import tornado.web
-import motor.motor_tornado
 from pymongo import MongoClient
 from Handlers.HelloWorldHandler import HelloWorldHandler
 from Handlers.FriendsHandler import FriendsHandler
@@ -18,12 +17,6 @@ def create_server_application(mongo_db_client):
 
 
 def main():
-    mongo_connection_string = CONN_STR
-    mongo_db_name = DB_NAME
-
-    # mongo_db_connection = motor.motor_tornado.MotorClient(mongo_connection_string)
-    # mongo_db_client = mongo_db_connection[mongo_db_name]
-
     mongo_db_client = MongoClient('localhost:27017')
 
     app = create_server_application(mongo_db_client)
