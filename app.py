@@ -10,7 +10,8 @@ root = os.path.dirname(__file__)
 
 def create_server_application(mongo_db_client):
     return tornado.web.Application([
-        (r'/helloworld',HelloWorldHandler)])
+        (r'/helloworld', HelloWorldHandler)
+    ])
 
 
 def main():
@@ -21,7 +22,7 @@ def main():
     mongo_db_client = mongo_db_connection[mongo_db_name]
 
     app = create_server_application(mongo_db_client)
-    app.listen(port = PORT,address = HOST)
+    app.listen(port = PORT, address = HOST)
     tornado.ioloop.IOLoop.current().start()
 
 
