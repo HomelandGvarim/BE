@@ -3,7 +3,7 @@ import tornado.ioloop
 import tornado.web
 import motor.motor_tornado
 from Handlers.HelloWorldHandler import HelloWorldHandler
-from Configuration.Config import HOST, PORT
+from Configuration.Config import HOST, PORT, DB_NAME
 
 root = os.path.dirname(__file__)
 
@@ -15,7 +15,8 @@ def create_server_application(mongo_db_client):
 
 def main():
     mongo_connection_string = 'localhost'
-    mongo_db_name = 'hackathonDB'
+    mongo_db_name = DB_NAME
+
     mongo_db_connection = motor.motor_tornado.MotorClient(mongo_connection_string)
     mongo_db_client = mongo_db_connection[mongo_db_name]
 
