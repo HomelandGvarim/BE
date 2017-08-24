@@ -2,7 +2,6 @@ import os
 import tornado.ioloop
 import tornado.web
 from pymongo import MongoClient
-from Handlers.HelloWorldHandler import HelloWorldHandler
 from Handlers.FriendsHandler import FriendsHandler
 from Configuration.Config import SERVER_HOST, SERVER_PORT, API_KEY, REG_ID
 
@@ -15,7 +14,6 @@ root = os.path.dirname(__file__)
 
 def create_server_application(mongo_db_client):
     return tornado.web.Application([
-        (r'/', HelloWorldHandler),
         (r'/sample_friends', FriendsHandler, dict(database = mongo_db_client))
     ])
 

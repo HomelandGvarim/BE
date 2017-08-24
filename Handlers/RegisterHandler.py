@@ -8,27 +8,21 @@ class RegisterHandler(tornado.web.RequestHandler):
         self._clients = clients
 
 
-    def get(self):
-        print 'Hello'
-        self.write({ 'WhoIsKing' : '!SHOSTI' })
-        self.set_status(200)
-
-
     def post(self):
         body = json.loads(self.request.body)
 
-        print body
-        user_id =  body['user_id']
-        reg_id = body['reg_id']
+        id =  body['user_id']
+        ip = body['user_ip']
+        port = body['user_port']
 
-        if user_id not in self._clients.keys():
+        if id not in self._clients.keys():
             # append new client to the dictionary with its reg_id
-            self._clients[user_id] = reg_id
+            self._clients[id] = { 'ip' : ip, 'port' : port }
 
             # send a success response
             self.set_status(200)
-            self.write({ 'is_succeed' : True })
+            self.write({ 'is_registered' : True })
         else:
             # send error response
             self.set_status(503)
-            self.write({ 'is_succeed' : False })
+            self.write({ 'is_registered' : False })
