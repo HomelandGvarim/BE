@@ -19,7 +19,7 @@ def main():
     mongo_db_client = mongo_db_connection[mongo_db_name]
 
     app = create_server_application(mongo_db_client)
-    app.listen(port=8000,address="0.0.0.0")
+    app.listen(port=7916,address="0.0.0.0")
     tornado.ioloop.IOLoop.current().start()
 
 
