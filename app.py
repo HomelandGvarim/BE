@@ -4,7 +4,7 @@ import tornado.web
 from pymongo import MongoClient
 from Handlers.HelloWorldHandler import HelloWorldHandler
 from Handlers.FriendsHandler import FriendsHandler
-from Configuration.Config import HOST, PORT, DB_NAME, CONN_STR
+from Configuration.Config import HOST, PORT
 
 root = os.path.dirname(__file__)
 
@@ -22,7 +22,6 @@ def main():
     app = create_server_application(mongo_db_client)
     app.listen(port = PORT, address = HOST)
     tornado.ioloop.IOLoop.current().start()
-
 
 
 if __name__ == "__main__":
