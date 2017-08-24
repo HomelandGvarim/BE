@@ -4,7 +4,7 @@ import tornado.web
 from pymongo import MongoClient
 from Handlers.HelloWorldHandler import HelloWorldHandler
 from Handlers.FriendsHandler import FriendsHandler
-from Configuration.Config import HOST, PORT
+from Configuration.Config import SERVER_HOST, SERVER_PORT
 
 root = os.path.dirname(__file__)
 
@@ -20,7 +20,7 @@ def main():
     mongo_db_client = MongoClient('localhost:27017')
 
     app = create_server_application(mongo_db_client)
-    app.listen(port = PORT, address = HOST)
+    app.listen(port = SERVER_PORT, address = SERVER_HOST)
     tornado.ioloop.IOLoop.current().start()
 
 
