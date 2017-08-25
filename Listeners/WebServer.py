@@ -1,17 +1,26 @@
-import os
 import tornado.ioloop
 import tornado.web
 
 from Handlers.RegisterHandler import RegisterHandler
+from Handlers.FollowersHandler import FollowersHandler
 
 
 class WebServer(object):
-    def __init__(self, port, address, clients):
+    def __init__(self, port, address, clients, database):
+        """
+        :param port: Port to listen on for Web Requests
+        :param address: local host
+        :param clients: runtime array of registered clients
+        :param database: database connection
+        """
         self._port = port
         self._address = address
 
         # all requests will be handled as register requests
-        self._app = tornado.web.Application([ (r'/', RegisterHandler, dict(clients = clients)) ])
+        self._app = tornado.web.Application([
+            (r'/register', RegisterHandler, dict(clients = clients)),
+            (r'/follow', FollowersHandler, dict(database = database))
+        ])
 
         # clients dictionary with their RegIDs
         self._clients = clients

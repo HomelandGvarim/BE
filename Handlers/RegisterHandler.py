@@ -7,6 +7,10 @@ class RegisterHandler(tornado.web.RequestHandler):
     def initialize(self, clients):
         self._clients = clients
 
+    def get(self):
+        self.set_status(200)
+        print 'Hel'
+        self.write('d')
 
     def post(self):
         body = json.loads(self.request.body)
